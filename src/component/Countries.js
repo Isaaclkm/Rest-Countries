@@ -16,6 +16,7 @@ const Countries = () => {
        fetchCountryData()
     }, [])
 
+
   return (
     <>
      <section className='grid'>
