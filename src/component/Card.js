@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 
 
@@ -32,25 +32,35 @@ const Card = () => {
 
   return (
      <section className='information'>
+
+        <Link to={`http://localhost:3000`}><h4 className='button'> Back</h4></Link>
         {country ? (
           <>
-            <div className='image-container'>
-              {country.flags && <img src={country.flags.svg} alt={country.name.common} />}
-            </div>
+          <div className='box'>
+                <div className='image-container'>
+                  {country.flags && <img src={country.flags.svg} alt={country.name.common} />}
+                </div>
 
-            <div className='text-container'>
-              <h1>{country.name.common}</h1>
-              <p>Population: {country.population}</p>
-              <p>Region: {country.region}</p>
-              <p>Sub Region: {country.region}</p>
-              <p>Capital: {country.capital}</p>
-              <p>Top Level Domain: {country.tld}</p>
-              <p>Currencies: </p>
-              <p>Languages: {country.languages && Object.values(country.languages).join(', ')}</p>
+                <div className='text-container'>
+                  <h1>{country.name.common}</h1>
 
-              <h3>Border Countries: {country.borders && country.borders.join(', ')}</h3>
-            </div>
-        
+                  <div className='data'>
+                    <div className='first-data'>
+                      <p>Native name: <span>{country.name.nativeName && Object.values(country.name.nativeName)[0].official}</span></p>
+                      <p>Population: <span>{country.population}</span></p>
+                      <p>Region: <span>{country.region}</span></p>
+                      <p>Sub Region: <span>{country.region}</span></p>
+                      <p>Capital: <span>{country.capital}</span></p>
+                    </div>
+                    <div className='second-data'>
+                      <p>Top Level Domain: <span> {country.tld}</span></p>
+                      <p>Currencies: <span>{country.currencies && Object.values(country.currencies)[0].name}</span></p>
+                      <p>Languages: <span>{country.languages && Object.values(country.languages).join(', ')}</span></p>
+                    </div>
+                  </div>
+                   {country.borders ? ( <h4>Border Countries: {country.borders.map(curr => <span>{curr}</span>)}</h4> ): ( <p></p>)}
+                </div>
+              </div>
             {/* Add more elements to display other properties */}
           </>
         ) : (
