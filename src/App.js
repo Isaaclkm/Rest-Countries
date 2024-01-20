@@ -2,25 +2,23 @@ import React from 'react'
 import Countries from './component/Countries'
 import Header from './component/Header';
 import Filter from './component/Filter';
-import {
-  Routes,
-  Route,
-} from "react-router-dom";
+import {  BrowserRouter, Routes, Route } from 'react-router-dom'
+import Card from './component/Card';
 
 function App() {
   return (
-  <>
-    <Header/>
-    <Routes>
-      <Route path='/' elements={
-      <Filter/>
-      <Countries/>}/>
-      <Route path='/product' element={<Card/>}/>
-    </Routes>
-    <Filter/>
-    <Countries/>
+  <BrowserRouter>
+     <Header/>
 
-  </>
+     <Routes>
+      <Route path='/'  element={<Countries/>}/>
+      <Route path='/name/:id'  element={<Card/>}/>
+     </Routes>
+  
+  
+  </BrowserRouter>
+  
+
   )
 }
 

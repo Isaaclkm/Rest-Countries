@@ -73,6 +73,8 @@ body{
   border-radius: 5px;
 }
 
+/* Grid */
+
 .grid{
   display: grid;
   grid-template-columns: 1fr;
@@ -136,6 +138,18 @@ body{
 
   .grid{
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .information{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8rem 5rem;
+    flex: 1 1 0;
+  }
+  .information .image-container{
+    width: 450px;
+    height: 600px;
   }
 }
 

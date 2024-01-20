@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import Filter from './Filter'
+import { Link } from 'react-router-dom'
 
 const url = 'https://restcountries.com/v3.1/all'
 
@@ -19,6 +21,7 @@ const Countries = () => {
 
   return (
     <>
+    <Filter/>
      <section className='grid'>
      {countries.map((country) => {
         const { 
@@ -30,8 +33,10 @@ const Countries = () => {
           region 
         } = country 
       
-
-        return (<article key={ccn3}>
+        return (
+        
+        <article key={ccn3}>
+           <Link to={`/name/${name.common}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <div>
                 <img src={flags.svg} alt={name} />
                   <div className='details'>
@@ -41,8 +46,9 @@ const Countries = () => {
                     <h4>Capital: <span> {capital}</span></h4>
                   </div>
                 </div>
-
+              </Link>
             </article>
+
             )
        })}
      </section>
