@@ -1,32 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 
 
 const Card = () => {
  
-  const id = useParams();
+  const {id} = useParams();
 
-  const url = `https://restcountries.com/v3.1/name/${id.id}`;
+  const url = `https://restcountries.com/v3.1/name/${id}`;
 
   const [country, setCountry] = useState(null)
 
-    const fetchCountryData = async() => {
-      try {
-        const response = await fetch(url)
-        const country = await response.json()
-        setCountry(country[0])
-        console.log(country);
-      } catch (error) {
-        console.error('Error fetching country data:', error);
-      }
-       
+  const fetchCountryData = useCallback(async () => {
+    try {
+      const response = await fetch(url);
+      const countryData = await response.json();
+      setCountry(countryData[0]);
+      console.log(countryData);
+    } catch (error) {
+      console.error('Error fetching country data:', error);
     }
+  }, [url]);
 
-    useEffect(() => {
-       fetchCountryData()
-    }, [id])
-
+  useEffect(() => {
+    fetchCountryData();
+  }, [fetchCountryData]);
 
 
 
