@@ -1,7 +1,6 @@
 import React from 'react'
 import Countries from './component/Countries'
 import Header from './component/Header';
-import Filter from './component/Filter';
 import {  BrowserRouter, Routes, Route } from 'react-router-dom'
 import Card from './component/Card';
 
