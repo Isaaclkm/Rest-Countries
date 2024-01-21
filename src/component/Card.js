@@ -31,7 +31,7 @@ const Card = () => {
   return (
      <section className='information'>
 
-        <Link to={`http://localhost:3000`}><h4 className='button'> Back</h4></Link>
+        <Link to={`/`}><h4 className='button'> Back</h4></Link>
         {country ? (
           <>
           <div className='box'>
